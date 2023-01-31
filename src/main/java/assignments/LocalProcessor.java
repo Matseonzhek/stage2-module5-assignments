@@ -8,16 +8,15 @@ import lombok.Setter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 @Getter
 @Setter
 public class LocalProcessor {
-    private StringBuilder stringBuilder;
     private static List<String> stringArrayList;
-    protected String processorVersion;
+    private String processorVersion;
+    private StringBuilder stringBuilder;
     private String processorName;
     private long period;
     private int valueOfCheap;
@@ -37,9 +36,10 @@ public class LocalProcessor {
 
     @ListIteratorAnnotation
     public void iterateList(List<String> stringList) {
-        stringArrayList = new LinkedList<>(stringList);
-        for (String element : stringArrayList) {
-            System.out.println(element.hashCode());
+        if (stringList != null) {
+            for (String element : stringList) {
+                System.out.println(element.hashCode());
+            }
         }
     }
 
