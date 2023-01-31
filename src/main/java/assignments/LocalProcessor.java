@@ -70,7 +70,9 @@ public class LocalProcessor {
             System.out.println("Exception was processed. Program continues");
             e.printStackTrace();
         } finally {
-            informationScanner.close();
+            if (informationScanner != null) {
+                informationScanner.close();
+            }
         }
     }
 }
