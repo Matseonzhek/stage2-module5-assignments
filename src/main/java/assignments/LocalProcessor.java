@@ -15,6 +15,7 @@ import java.util.Scanner;
 @Getter
 @Setter
 public class LocalProcessor {
+    private StringBuilder stringBuilder;
     private static List<String> stringArrayList;
     protected String processorVersion;
     private String processorName;
@@ -35,7 +36,7 @@ public class LocalProcessor {
     }
 
     @ListIteratorAnnotation
-    public void iterate(List<String> stringList) {
+    public void iterateList(List<String> stringList) {
         stringArrayList = new LinkedList<>(stringList);
         for (String element : stringArrayList) {
             System.out.println(element.hashCode());
@@ -47,7 +48,7 @@ public class LocalProcessor {
         if (stringList == null) {
             return processorName;
         }
-        StringBuilder stringBuilder = new StringBuilder(processorName);
+        stringBuilder = new StringBuilder(processorName);
         for (String element : stringList) {
             stringBuilder.append(element).append(" ");
         }
@@ -56,7 +57,7 @@ public class LocalProcessor {
 
     @ReadFullProcessorNameAnnotation
     public void readFullProcessorName(File file) {
-        StringBuilder stringBuilder = new StringBuilder(processorVersion);
+        stringBuilder = new StringBuilder(processorVersion);
         try {
             informationScanner = new Scanner(file);
             while (informationScanner.hasNext()) {
